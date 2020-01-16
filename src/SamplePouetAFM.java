@@ -120,18 +120,7 @@ public class SamplePouetAFM implements FsmModel
     /**
      *  Guard for the transition. Should be named after the transition name, suffixed by "Guard"
      */
-    public boolean cancelGuard() { return state == 1; }
-    /**
-     *  Transition itself. Annotated with @Action to indicate the method is a transition of the FSM.
-     */
-    @Action
-    public void cancel()
-    {
-        // evolution of the state
-        state = 0;
-        // transmits the operation to the System Under Test
-        adapter.cancel();
-    }
+
 
     /***
      * Main program
