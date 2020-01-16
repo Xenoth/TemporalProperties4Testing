@@ -72,7 +72,7 @@ public class SampleFSM implements FsmModel
     public void cancel()
     {
         // evolution of the state
-        state = 1;
+        state = 0;
         // transmits the operation to the System Under Test
         adapter.cancel();
     }

@@ -10,16 +10,30 @@ public class ATMAdapter {
         sut = new ATM();
     }
 
-    public void insertCard() {
+    public void insertCardValid() {
         // create a card with pin code 1234 and associated account of 100 euros in balance
         Card c = new Card(1234, new Account(100));
         System.out.println("Inserted card");
-        sut.insertCard(c);
+        int val = sut.insertCard(c);
+    }
+
+    public void insertCardBlocked() {
+        // create a card with pin code 1234 and associated account of 100 euros in balance
+        Card c = new Card(1234, new Account(100));
+        System.out.println("Inserted card");
+        c.checkPin(1111);
+        c.checkPin(1111);
+        c.checkPin(1111);
+        int val = sut.insertCard(c);
     }
 
     public void cancel() {
         System.out.println("Pressed cancel");
         sut.cancel();
+    }
+
+    public void chooseAmount(){
+
     }
 
 }

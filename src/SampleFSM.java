@@ -46,18 +46,35 @@ public class SampleFSM implements FsmModel
     /**
      *  Guard for the transition. Should be named after the transition name, suffixed by "Guard"
      */
-    public boolean insertCardGuard() { return state == 0; }
+    public boolean insertCardValidGuard() { return state == 0; }
     /**
      *  Transition itself. Annotated with @Action to indicate the method is a transition of the FSM.
      */
     @Action
-    public void insertCard()
+    public void insertCardValid()
     {
         // evolution of the state
         state = 1;
         // realizes the transition on the System Under Test
-        adapter.insertCard();
+        adapter.insertCardValid();
     }
+
+    /**
+     *  Guard for the transition. Should be named after the transition name, suffixed by "Guard"
+     */
+    public boolean insertCardBlockedGuard() { return state == 0; }
+    /**
+     *  Transition itself. Annotated with @Action to indicate the method is a transition of the FSM.
+     */
+    @Action
+    public void insertCardBlocked()
+    {
+        // evolution of the state
+        state = 2;
+        // realizes the transition on the System Under Test
+        adapter.insertCardBlocked();
+    }
+
 
     /**
      *  Guard for the transition. Should be named after the transition name, suffixed by "Guard"
@@ -70,7 +87,7 @@ public class SampleFSM implements FsmModel
     public void cancel()
     {
         // evolution of the state
-        state = 1;
+        state = 0;
         // transmits the operation to the System Under Test
         adapter.cancel();
     }
